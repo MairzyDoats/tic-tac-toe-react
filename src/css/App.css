@@ -1,0 +1,28 @@
+@import './main.css';
+@import './game.css';
+@import './gametile.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg-color: hsl(0, 0%, 100%);
+  --primary-color: hsl(0, 0%, 0%);
+  --border-properties: 5px solid var(--primary-color);
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+}
