@@ -1,36 +1,79 @@
-import React, { useState } from 'react'
-import GameTile from './GameTile'
+import React, { useState, useEffect } from 'react';
+import GameTile from './GameTile';
+import Modal from './Modal';
 
-export const GameContext = React.createContext()
+export const GameContext = React.createContext();
 
 export default function Game() {
-  const [player, setPlayer] = useState("x")
+  const [player, setPlayer] = useState("x");
+  const [gameState, setGameState] = useState([" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+  const [winningMessage, setWinningMessage] = useState(null);
+  const [reset, setReset] = useState(false);
 
   const gameContextValue = {
+    gameState,
+    handlePlayerChange,
+    handleReset,
     player,
-    handlePlayerChange
+    reset,
+    winningMessage
   }
 
-  function handlePlayerChange() {
-    if (player === "x") {
-      setPlayer("circle")
-    } else {
-      setPlayer("x")
+  useEffect(() => {
+    if (reset) {
+      setReset(false);
     }
+
+    const winningStates = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
+
+    const checkForWin = () => {
+      winningStates.forEach(stateArray => {
+        if (gameState[stateArray[0]] === " ") { return }
+        else if (
+          gameState[stateArray[0]] === gameState[stateArray[1]] &&
+          gameState[stateArray[0]] === gameState[stateArray[2]]
+        ) { setWinningMessage(`${gameState[stateArray[0]]} has won!`); }
+      })
+      if (!gameState.includes(" ")) { setWinningMessage("Draw!"); }
+    };
+    checkForWin();
+  }, [gameState, player, reset])
+
+  function handleReset() {
+    setReset(true);
+    setWinningMessage(null);
+    setGameState([" ", " ", " ", " ", " ", " ", " ", " ", " "]);
+    setPlayer("x");
   }
+
+  function handlePlayerChange(index, currentPlayer) {
+    let newArray = [...gameState]
+    newArray[index] = currentPlayer;
+    setGameState(newArray);
+    console.log(gameState);
+    if (player === "x") {
+      setPlayer("circle");
+    } else {
+      setPlayer("x");
+    }
+  };
 
   return (
     <GameContext.Provider value={gameContextValue}>
+      {winningMessage && <Modal message />}
       <div className="game">
-        <GameTile id="0" />
-        <GameTile id="1" />
-        <GameTile id="2" />
-        <GameTile id="3" />
-        <GameTile id="4" />
-        <GameTile id="5" />
-        <GameTile id="6" />
-        <GameTile id="7" />
-        <GameTile id="8" />
+        {gameState.map((state, index) => {
+          return <GameTile key={index} id={index.toString()} />
+        })}
       </div>
     </GameContext.Provider>
   )

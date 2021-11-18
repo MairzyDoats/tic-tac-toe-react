@@ -1,6 +1,7 @@
 @import './main.css';
 @import './game.css';
 @import './gametile.css';
+@import 'modal.css';
 
 *,
 *::before,
