@@ -3,7 +3,7 @@ import Game from './Game'
 
 export default function Main() {
   return (
-    <main>
+    <main className="main">
       <Game />
     </main>
   )

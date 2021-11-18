@@ -7,7 +7,7 @@
   position: absolute;
   width: 5%;
   height: 95%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-accent-color);
   transform: translateX(-50%) rotate(-45deg);
   right: 50%;
 }
@@ -17,7 +17,7 @@
   position: absolute;
   width: 5%;
   height: 95%;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-accent-color);
   transform: translateX(-50%) rotate(45deg);
   right: 50%;
 }
@@ -27,7 +27,7 @@
   position: absolute;
   width: 5%;
   height: 95%;
-  background-color: var(--primary-color);
+  background-color: var(--unclicked-color);
   transform: translateX(-50%) rotate(-45deg);
   right: 50%;
   opacity: 0;
@@ -38,7 +38,7 @@
   position: absolute;
   width: 5%;
   height: 95%;
-  background-color: var(--primary-color);
+  background-color: var(--unclicked-color);
   transform: translateX(-50%) rotate(45deg);
   right: 50%;
   opacity: 0;
@@ -53,7 +53,7 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border: 10px solid var(--primary-color);
+  border: 10px solid var(--primary-accent-color);
   border-radius: 100%;
 }
 
@@ -67,22 +67,17 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   border-radius: 100%;
-  border: 10px solid var(--primary-color);
+  border: 10px solid var(--unclicked-color);
   opacity: 0;
 }
 
 .game-tile--unclicked-x:hover::before,
 .game-tile--unclicked-x:focus::before,
 .game-tile--unclicked-x:hover::after,
-.game-tile--unclicked-x:focus::after {
-  opacity: 1;
-  background-color: lightgrey;
-}
-
+.game-tile--unclicked-x:focus::after,
 .game-tile--unclicked-circle:hover::before,
 .game-tile--unclicked-circle:focus::before {
   opacity: 1;
-  border-color: lightgrey;
 }
 
 .game-tile-0 {

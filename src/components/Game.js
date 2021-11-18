@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GameTile from './GameTile';
 import Modal from './Modal';
+import ResetButton from './ResetButton';
 
 export const GameContext = React.createContext();
 
@@ -69,11 +70,14 @@ export default function Game() {
 
   return (
     <GameContext.Provider value={gameContextValue}>
-      {winningMessage && <Modal message />}
       <div className="game">
-        {gameState.map((state, index) => {
-          return <GameTile key={index} id={index.toString()} />
-        })}
+        {winningMessage && <Modal message />}
+        <div className="game__canvas">
+          {gameState.map((state, index) => {
+            return <GameTile key={index} id={index.toString()} />
+          })}
+        </div>
+        <ResetButton text="Restart" />
       </div>
     </GameContext.Provider>
   )

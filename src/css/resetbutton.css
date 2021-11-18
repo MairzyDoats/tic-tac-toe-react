@@ -1,0 +1,15 @@
+.reset__button {
+  padding: 1em;
+  border: none;
+  background-color: var(--primary-accent-color);
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.reset__button:hover,
+.reset__button:active,
+.reset__button:focus {
+  opacity: .8;
+  transform: scale(110%);
+}
