@@ -42,9 +42,11 @@ export default function Game() {
         else if (
           gameState[stateArray[0]] === gameState[stateArray[1]] &&
           gameState[stateArray[0]] === gameState[stateArray[2]]
-        ) { setWinningMessage(`${gameState[stateArray[0]]} has won!`); }
+        ) {
+          setWinningMessage(`${gameState[stateArray[0]]} has won!`);
+        }
       })
-      if (!gameState.includes(" ")) { setWinningMessage("Draw!"); }
+      if (!gameState.includes(" ") && winningMessage !== null) { setWinningMessage("Draw!"); }
     };
     checkForWin();
   }, [gameState, player, reset])
