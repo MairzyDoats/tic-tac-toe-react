@@ -2,6 +2,9 @@
 @import './game.css';
 @import './gametile.css';
 @import 'modal.css';
+@import 'resetbutton.css';
+@import 'header.css';
+@import 'footer.css';
 
 *,
 *::before,
@@ -12,6 +15,9 @@
 :root {
   --primary-bg-color: hsl(0, 0%, 100%);
   --primary-color: hsl(0, 0%, 0%);
+  --primary-accent-color: hsl(350, 82%, 57%);
+  --secondary-accent-color: hsl(165, 77%, 35%);
+  --unclicked-color: hsl(0, 0%, 83%);
   --border-properties: 5px solid var(--primary-color);
 }
 
