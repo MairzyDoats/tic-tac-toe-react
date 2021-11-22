@@ -45,11 +45,11 @@ export default function Game() {
         ) {
           setWinningMessage(`${gameState[stateArray[0]]} has won!`);
         }
+        else if (!gameState.includes(" ") && !winningMessage) { setWinningMessage("Draw!"); }
       })
-      if (!gameState.includes(" ") && winningMessage !== null) { setWinningMessage("Draw!"); }
     };
     checkForWin();
-  }, [gameState, player, reset])
+  }, [gameState, player, reset, winningMessage]);
 
   function handleReset() {
     setReset(true);
