@@ -62,7 +62,6 @@ export default function Game() {
     let newArray = [...gameState]
     newArray[index] = currentPlayer;
     setGameState(newArray);
-    console.log(gameState);
     if (player === "x") {
       setPlayer("circle");
     } else {
